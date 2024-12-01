@@ -17,4 +17,14 @@ def part_01_solution(x: list[int], y: list[int]) -> int:
         distances.append(abs(x[i] - y[i]))
     return sum(distances)
 
+def part_02_solution(x: list[int], y: list[int]) -> int:
+    similarity_scores = []
+
+    for i in range(len(x)):
+        current_value = x[i]
+        y_occurrences = len([z for z in y if z == current_value])
+        similarity_scores.append(current_value * y_occurrences)
+    return sum(similarity_scores)
+
 print("Part 1 Answer:", part_01_solution(list_a, list_b))
+print("Part 2 Answer:", part_02_solution(list_a, list_b))
