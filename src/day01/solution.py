@@ -8,11 +8,13 @@ for line in lines:
     list_a.append(int(split_line[0]))
     list_b.append(int(split_line[1]))
 
-list_a = sorted(list_a)
-list_b = sorted(list_b)
+def part_01_solution(x: list[int], y: list[int]) -> int:
+    x = sorted(x)
+    y = sorted(y)
 
-distances = []
-for i in range(len(list_a)):
-    distances.append(abs(list_a[i] - list_b[i]))
+    distances = []
+    for i in range(len(x)):
+        distances.append(abs(x[i] - y[i]))
+    return sum(distances)
 
-print("Part 1 Answer:", sum(distances))
+print("Part 1 Answer:", part_01_solution(list_a, list_b))
