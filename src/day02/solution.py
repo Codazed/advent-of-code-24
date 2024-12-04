@@ -1,8 +1,6 @@
 with open("input.txt", "r") as f:
     lines = f.readlines()
 
-safe_reports = 0
-
 def report_is_safe(_report: str) -> bool:
     levels = [int(x) for x in _report.split()]
     direction: str | None = None
@@ -13,22 +11,20 @@ def report_is_safe(_report: str) -> bool:
         if delta < 0:
             if direction is None:
                 direction = "down"
-                continue
-            if direction == "up":
+            elif direction == "up":
                 return False
-            continue
         else:
             if direction is None:
                 direction = "up"
-                continue
-            if direction == "down":
+            elif direction == "down":
                 return False
-            continue
     return True
 
+def part_01_solution(reports: list[str]) -> int:
+    safe_reports = 0
+    for report in reports:
+        if report_is_safe(report):
+            safe_reports += 1
+    return safe_reports
 
-for report in lines:
-    if report_is_safe(report):
-        safe_reports += 1
-
-print(safe_reports)
+print("Part 1 Answer:", part_01_solution(lines))
